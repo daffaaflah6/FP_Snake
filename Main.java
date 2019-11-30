@@ -1,5 +1,3 @@
-package id.ac.its.syarif.fppbof3;
-
 import java.awt.Dimension;
 import javax.swing.JFrame;
 
