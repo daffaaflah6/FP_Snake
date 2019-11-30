@@ -1,3 +1,5 @@
+package id.ac.its.syarif.fppbof3;
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -192,7 +194,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
 				Entity e = new Entity(SIZE);
 				e.setPosition(-100,-100);
 				snake.add(e);
-				if(score % 20 == 0) {
+				if(score % 10 == 0) {
 					level++;
 					if(level > 20) level = 20;
 					setFPS(level * 20);
@@ -217,13 +219,15 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
 			g2d.setColor(Color.RED);
 			apple.render(g2d);
 			if(gameover) {
-				g2d.drawString("Game Over!", 200, 200);
+				g2d.drawString("Game Over!", 150, 200);
+				g2d.drawString("Press Enter to Restart", 120, 210);
 			}
 
 			g2d.setColor(Color.WHITE);
 			g2d.drawString("Score : " + score + "   Level : " + level, 20, 20);
 			if(dx == 0 && dy == 0) {
-				g2d.drawString("Ready!", 200, 200);
-			}
+				g2d.drawString("Ready!", 170, 200);
+				g2d.drawString("Press Any Arrow to Start", 150, 220);
 		}
+}
 }
