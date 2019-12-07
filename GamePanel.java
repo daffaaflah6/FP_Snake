@@ -1,7 +1,10 @@
+<<<<<<< HEAD
 package id.ac.its.syarif.fppbof3;
 
 import java.applet.Applet;
 import java.applet.AudioClip;
+=======
+>>>>>>> 6de193cc6afcb487eea1d6ccd699fe0e4eb15623
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -232,15 +235,15 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
 			g2d.setColor(Color.RED);
 			apple.render(g2d);
 			if(gameover) {
-				g2d.drawString("Game Over!", 150, 200);
-				g2d.drawString("Press Enter to Restart", 120, 210);
+				g2d.drawString("Game Over!", 175, 175);
+				g2d.drawString("Press Enter to Restart", 150, 200);
 			}
 
 			g2d.setColor(Color.WHITE);
 			g2d.drawString("Score : " + score + "   Level : " + level, 20, 20);
 			if(dx == 0 && dy == 0) {
-				g2d.drawString("Ready!", 170, 200);
-				g2d.drawString("Press Any Arrow to Start", 150, 220);
+				g2d.drawString("Ready!", 200, 175);
+				g2d.drawString("Press Any Arrow to Start", 150, 200);
 		}
 }
 }
