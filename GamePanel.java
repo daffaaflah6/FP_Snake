@@ -6,13 +6,11 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.Image;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 import java.net.URL;
 import java.util.ArrayList;
-import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 @SuppressWarnings("serial")
@@ -205,13 +203,15 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
 				snake.add(e);
 				URL url = Sound.class.getResource("eat.wav");
 				AudioClip clip = Applet.newAudioClip(url);
-				clip.play();
-//				Thread.sleep(100);
+				URL url2 = Sound.class.getResource("levelup.wav");
+				AudioClip clip2 = Applet.newAudioClip(url2);
 				if(score % 10 == 0) {
+					clip2.play();
 					level++;
 					if(level > 20) level = 20;
 					setFPS(level * 20);
 				}
+				else clip.play();
 			}
 			
 			if(head.getX() < 0) head.setX(WIDTH);
