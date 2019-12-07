@@ -1,5 +1,7 @@
 package id.ac.its.syarif.fppbof3;
 
+import java.applet.Applet;
+import java.applet.AudioClip;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -8,6 +10,7 @@ import java.awt.Image;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
+import java.net.URL;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
@@ -89,8 +92,14 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
 			while(running) {
 				startTime = System.nanoTime();
 				
-				update();
-				requestRender();
+				try {
+					update();
+					requestRender();
+				} catch (InterruptedException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
 				
 				elapsed = System.nanoTime() - startTime;
 				wait = targetTime - elapsed /1000000;
@@ -145,7 +154,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
 			g.dispose();
 		}
 		
-		private void update() {
+		private void update() throws InterruptedException {
 			if(gameover) {
 				if(start) {
 					setUplevel();
@@ -194,6 +203,10 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
 				Entity e = new Entity(SIZE);
 				e.setPosition(-100,-100);
 				snake.add(e);
+				URL url = Sound.class.getResource("eat.wav");
+				AudioClip clip = Applet.newAudioClip(url);
+				clip.play();
+//				Thread.sleep(100);
 				if(score % 10 == 0) {
 					level++;
 					if(level > 20) level = 20;
