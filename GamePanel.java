@@ -1,5 +1,3 @@
-package id.ac.its.syarif.fppbof3;
-
 import java.applet.Applet;
 import java.applet.AudioClip;
 import java.awt.Color;
