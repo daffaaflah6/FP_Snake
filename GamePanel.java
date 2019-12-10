@@ -16,6 +16,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
 		//Render
 		private Graphics2D g2d;
 		private BufferedImage image;
+		private BufferedImage testImage;
 		//Game Loop
 		private Thread thread;
 		private boolean running;
@@ -128,6 +129,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
 			
 			this.addMouseListener(new MouseInput( ));
 			
+			testImage = ImageLoader.loadImage("/ground_background.png");
 		}
 		private void setUplevel() {
 			snake = new ArrayList<Entity>();
@@ -240,7 +242,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
 		}
 		
 		public void render(Graphics2D g2d) {
-			g2d.clearRect(0, 0, WIDTH, HEIGHT);
+			g2d.drawImage(testImage, 0, 0, null);
 			
 			g2d.setColor(Color.GREEN);
 			for(Entity e : snake) {
