@@ -1,5 +1,3 @@
-import java.applet.Applet;
-import java.applet.AudioClip;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -7,7 +5,6 @@ import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
-import java.net.URL;
 import java.util.ArrayList;
 import javax.swing.JPanel;
 
@@ -265,7 +262,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
 			g2d.drawString("Score : " + score + "   Level : " + level + "   Life : " + life, 20, 20);
 			if(dx == 0 && dy == 0) {
 				g2d.drawString("Ready!", 170, 150);
-				g2d.drawString("Press Any Arrow to Start", 100, 170);
+				g2d.drawString("Press Up Arrow to Start", 100, 170);
 		}
 }
 }
