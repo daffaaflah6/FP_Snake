@@ -30,6 +30,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
 		private ArrayList<Entity> snake;
 		private int score;
 		private int level;
+		private int life;
 		private boolean gameover;
 		//Movement
 		private int dx,dy;
@@ -145,6 +146,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
 			apple = new Entity(SIZE);
 			setApple();
 			score = 0;
+			life = 3;
 			dx = dy = 0;
 			gameover = false;
 		}
@@ -206,8 +208,12 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
 			
 			for(Entity e : snake) {
 				if(e.isCollsion(head)) {
-					gameover = true;
-					break;
+					life--;
+					if(life == 0) {
+						gameover = true;
+						break;
+					}
+					
 				}
 			}
 			
@@ -254,7 +260,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
 			}
 
 			g2d.setColor(Color.WHITE);
-			g2d.drawString("Score : " + score + "   Level : " + level, 20, 20);
+			g2d.drawString("Score : " + score + "   Level : " + level + "   Life : " + life, 20, 20);
 			if(dx == 0 && dy == 0) {
 				g2d.drawString("Ready!", 170, 150);
 				g2d.drawString("Press Any Arrow to Start", 100, 170);
