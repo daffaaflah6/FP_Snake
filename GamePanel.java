@@ -34,6 +34,15 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
 		//Movement
 		private int dx,dy;
 		
+		//Menu
+		private Menu menu;
+		public static enum STATE{
+			MENU,
+			GAME
+		};
+		
+		public static STATE State = STATE.MENU;
+		
 		//Key Input
 		private boolean up,down,right,left,start;
 		
@@ -54,12 +63,13 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
 		@Override
 		public void keyPressed(KeyEvent e) {
 			int k = e.getKeyCode();
-			
-			if(k == KeyEvent.VK_UP) up = true;
-			if(k == KeyEvent.VK_DOWN) down = true;
-			if(k == KeyEvent.VK_LEFT) left = true;
-			if(k == KeyEvent.VK_RIGHT) right = true;
-			if(k == KeyEvent.VK_ENTER) start = true;
+			if(State == STATE.GAME) {
+				if(k == KeyEvent.VK_UP) up = true;
+				if(k == KeyEvent.VK_DOWN) down = true;
+				if(k == KeyEvent.VK_LEFT) left = true;
+				if(k == KeyEvent.VK_RIGHT) right = true;
+				if(k == KeyEvent.VK_ENTER) start = true;
+			}
 		}
 
 		@Override
@@ -116,6 +126,9 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
 			gameover = false;
 			level = 1;
 			setFPS(level * 20);
+			menu = new Menu();
+			
+			this.addMouseListener(new MouseInput( ));
 			
 		}
 		private void setUplevel() {
@@ -144,10 +157,16 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
 			apple.setPosition(x, y);
 		}
 		private void requestRender() {
+
+			if(State == STATE.GAME) {
 			render(g2d);
+			}else if(State == STATE.MENU) {
+				menu.render(g2d);
+			}
 			Graphics g = getGraphics();
 			g.drawImage(image, 0,0,null);
 			g.dispose();
+
 		}
 		
 		private void update() throws InterruptedException {
@@ -220,11 +239,15 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
 			
 			g2d.setColor(Color.GREEN);
 			for(Entity e : snake) {
-				e.render(g2d);
+				if(State == STATE.GAME) {
+					e.render(g2d);
+				}
 			}
 			
 			g2d.setColor(Color.RED);
-			apple.render(g2d);
+			if(State == STATE.GAME) {
+				apple.render(g2d);
+			}
 			if(gameover) {
 				g2d.drawString("Game Over!", 150, 200);
 				g2d.drawString("Press Enter to Restart", 120, 210);
