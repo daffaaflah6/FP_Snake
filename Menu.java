@@ -3,6 +3,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.Color;
+import java.awt.image.BufferedImage;
 
 
 public class Menu {
@@ -10,9 +11,12 @@ public class Menu {
 	public Rectangle playButton = new Rectangle(GamePanel.WIDTH / 11 + 120, 120, 100, 50);
 	public Rectangle difficultyButton = new Rectangle(GamePanel.WIDTH / 11 + 120, 220, 100, 50);
 	public Rectangle quitButton = new Rectangle(GamePanel.WIDTH / 11 + 120, 320, 100, 50);
-
+	private BufferedImage testImage;
+	
 	public void render(Graphics g) {
+		testImage = ImageLoader.loadImage("/background_menu.png");
 		Graphics2D g2d = (Graphics2D) g;
+		g2d.drawImage(testImage, 0, 0, null);
 		
 		Font fnt0 = new Font("arial", Font.BOLD, 30);
 		g.setFont(fnt0);
