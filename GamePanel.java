@@ -129,7 +129,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
 			
 			this.addMouseListener(new MouseInput( ));
 			
-			testImage = ImageLoader.loadImage("/ground_background.png");
+			testImage = ImageLoader.loadImage("/background.png");
 		}
 		private void setUplevel() {
 			snake = new ArrayList<Entity>();
