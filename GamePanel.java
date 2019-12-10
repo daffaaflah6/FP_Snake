@@ -200,7 +200,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
 				e.setPosition(-100,-100);
 				snake.add(e);
 				if(score % 10 == 0) {
-					
+					Sound.LEVELUP.play();
 					level++;
 					if(level > 20) level = 20;
 					setFPS(level * 20);
