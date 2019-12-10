@@ -199,17 +199,13 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
 				Entity e = new Entity(SIZE);
 				e.setPosition(-100,-100);
 				snake.add(e);
-				URL url = Sound.class.getResource("eat.wav");
-				AudioClip clip = Applet.newAudioClip(url);
-				URL url2 = Sound.class.getResource("levelup.wav");
-				AudioClip clip2 = Applet.newAudioClip(url2);
 				if(score % 10 == 0) {
-					clip2.play();
+					
 					level++;
 					if(level > 20) level = 20;
 					setFPS(level * 20);
 				}
-				else clip.play();
+				else Sound.EAT.play();
 			}
 			
 			if(head.getX() < 0) head.setX(WIDTH);
