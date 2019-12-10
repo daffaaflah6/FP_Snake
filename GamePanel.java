@@ -211,6 +211,8 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
 					life--;
 					if(life == 0) {
 						gameover = true;
+						level = 1;
+						setFPS(20);
 						break;
 					}
 					
