@@ -1,5 +1,3 @@
-package id.ac.its.syarif.fppbof3;
-
 import java.awt.Rectangle;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
