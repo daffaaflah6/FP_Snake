@@ -249,15 +249,15 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
 				apple.render(g2d);
 			}
 			if(gameover) {
-				g2d.drawString("Game Over!", 150, 200);
-				g2d.drawString("Press Enter to Restart", 120, 210);
+				g2d.drawString("Game Over!", 150, 150);
+				g2d.drawString("Press Enter to Restart", 100, 170);
 			}
 
 			g2d.setColor(Color.WHITE);
 			g2d.drawString("Score : " + score + "   Level : " + level, 20, 20);
 			if(dx == 0 && dy == 0) {
-				g2d.drawString("Ready!", 170, 200);
-				g2d.drawString("Press Any Arrow to Start", 150, 220);
+				g2d.drawString("Ready!", 170, 150);
+				g2d.drawString("Press Any Arrow to Start", 100, 170);
 		}
 }
 }
