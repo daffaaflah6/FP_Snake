@@ -1,1 +1,3 @@
 # FP_Snake
+
+Game Snake ini memiliki fitur level dan difficulty yang beragam, mulai dari easy, medium hingga hard. Dimana di masing-masing tingkatan ada tantangan tersendiri, yaitu dengan bertambahnya speed di masing-masing levelnya. Semakin tinggi tingkatannya maka semakin bertambah banyak juga speed nya. Selain itu didalamnya diberi nyawa sebanyak 3, jadi bisa menabrak diri sendiri sebanyak 3 kali. Tertarik ??? Silahkan dicoba...
