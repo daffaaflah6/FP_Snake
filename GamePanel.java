@@ -35,12 +35,15 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
 		
 		//Menu
 		private Menu menu;
+		private Difficult difficult;
 		public static enum STATE{
 			MENU,
+			DIFFICULT,
 			GAME
 		};
 		
 		public static STATE State = STATE.MENU;
+		public static STATE Sutacult = STATE.DIFFICULT;
 		
 		//Key Input
 		private boolean up,down,right,left,start;
@@ -125,6 +128,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
 			gameover = false;
 			level = 1;
 			setFPS(level * 20);
+			difficult = new Difficult();
 			menu = new Menu();
 			
 			this.addMouseListener(new MouseInput( ));
@@ -163,7 +167,10 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
 			render(g2d);
 			}else if(State == STATE.MENU) {
 				menu.render(g2d);
+			}else if(Sutacult == STATE.DIFFICULT) {
+				difficult.render(g2d);
 			}
+			
 			Graphics g = getGraphics();
 			g.drawImage(image, 0,0,null);
 			g.dispose();
