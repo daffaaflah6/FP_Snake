@@ -69,6 +69,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
 				if(k == KeyEvent.VK_LEFT) left = true;
 				if(k == KeyEvent.VK_RIGHT) right = true;
 				if(k == KeyEvent.VK_ENTER) start = true;
+				if(k == KeyEvent.VK_Q) System.exit(1);
 			}
 		}
 
@@ -81,6 +82,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
 			if(k == KeyEvent.VK_LEFT) left = false;
 			if(k == KeyEvent.VK_RIGHT) right = false;
 			if(k == KeyEvent.VK_ENTER) start = false;
+			if(k == KeyEvent.VK_Q) System.exit(0);
 		}
 
 		@Override
@@ -223,6 +225,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
 					if(life == 0) {
 						gameover = true;
 						level = 1;
+						life = 3;
 						setFPS(20);
 					}
 					break;
@@ -279,6 +282,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
 			if(gameover) {
 				g2d.drawString("Game Over!", 150, 200);
 				g2d.drawString("Press Enter to Restart", 100, 220);
+				g2d.drawString("Or (Q) to Quit", 140, 240);
 			}
 
 			g2d.setColor(Color.WHITE);
