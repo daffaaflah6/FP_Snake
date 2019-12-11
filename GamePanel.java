@@ -41,6 +41,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
 		};
 		
 		public static STATE State = STATE.MENU;
+		public static STATE State2 = STATE.GAME;
 		
 		//Key Input
 		private boolean up,down,right,left,start;
@@ -164,7 +165,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
 		private void requestRender() {
 			
 			if(State == STATE.GAME) {
-			render(g2d);
+				render(g2d);
 			
 			}else if(State == STATE.MENU) {
 				menu.render(g2d);
@@ -181,6 +182,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
 			
 			if(gameover) {
 				if(start) {
+					
 					setUplevel();
 					Sound.PLAY.play();
 					
@@ -240,7 +242,15 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
 					Sound.LEVELUP.play();
 					level++;
 					if(level > 20) level = 20;
-					setFPS(level * 20);
+					if(State == STATE.GAME) {
+						setFPS(level * 20);
+					}
+					else if(State == STATE.GAME) {
+						setFPS(level * 70);
+					}
+					else if(State == STATE.GAME) {
+						setFPS(level * 120);
+					}
 				}
 				else Sound.EAT.play();
 			}
@@ -262,22 +272,20 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
 				
 			}
 			
-			
-			
 			g2d.setColor(Color.RED);
 			//Hapus state di apple
 				apple.render(g2d);
 			
 			if(gameover) {
 				g2d.drawString("Game Over!", 150, 200);
-				g2d.drawString("Press Enter to Restart", 120, 220);
+				g2d.drawString("Press Enter to Restart", 100, 220);
 			}
 
 			g2d.setColor(Color.WHITE);
 			g2d.drawString("Score : " + score + "   Level : " + level + "   Life : " + life, 20, 20);
 			if(dx == 0 && dy == 0) {
 				g2d.drawString("Ready!", 170, 200);
-				g2d.drawString("Press Up Arrow to Start", 150, 220);
+				g2d.drawString("Press Up Arrow to Start", 100, 220);
 				Sound.PLAY.play();
 			}
 			
