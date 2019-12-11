@@ -127,11 +127,12 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
 			setUplevel();
 			gameover = false;
 			level = 1;
+			life = 3;
 			setFPS(level * 20);
 			difficult = new Difficult();
 			menu = new Menu();
 			
-			this.addMouseListener(new MouseInput( ));
+			this.addMouseListener(new MouseInput());
 			
 			testImage = ImageLoader.loadImage("/background.png");
 		}
@@ -149,7 +150,6 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
 			apple = new Entity(SIZE);
 			setApple();
 			score = 0;
-			life = 3;
 			dx = dy = 0;
 			gameover = false;
 		}
@@ -167,6 +167,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
 			render(g2d);
 			}else if(State == STATE.MENU) {
 				menu.render(g2d);
+				
 			}else if(Sutacult == STATE.DIFFICULT) {
 				difficult.render(g2d);
 			}
@@ -219,9 +220,8 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
 						gameover = true;
 						level = 1;
 						setFPS(20);
-						break;
 					}
-					
+					break;
 				}
 			}
 			
@@ -253,25 +253,28 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
 			
 			g2d.setColor(Color.GREEN);
 			for(Entity e : snake) {
-				if(State == STATE.GAME) {
+				//Hapus state yang di entity
 					e.render(g2d);
-				}
+				
 			}
 			
+			
+			
 			g2d.setColor(Color.RED);
-			if(State == STATE.GAME) {
+			//Hapus state di apple
 				apple.render(g2d);
-			}
+			
 			if(gameover) {
-				g2d.drawString("Game Over!", 150, 150);
-				g2d.drawString("Press Enter to Restart", 100, 170);
+				g2d.drawString("Game Over!", 150, 200);
+				g2d.drawString("Press Enter to Restart", 120, 220);
 			}
 
 			g2d.setColor(Color.WHITE);
 			g2d.drawString("Score : " + score + "   Level : " + level + "   Life : " + life, 20, 20);
 			if(dx == 0 && dy == 0) {
-				g2d.drawString("Ready!", 170, 150);
-				g2d.drawString("Press Up Arrow to Start", 100, 170);
+				g2d.drawString("Ready!", 170, 200);
+				g2d.drawString("Press Up Arrow to Start", 150, 220);
 		}
+			
 }
 }
