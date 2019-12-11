@@ -95,7 +95,9 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
 			long elapsed;
 			long wait;
 			while(running) {
+				
 				startTime = System.nanoTime();
+				Sound.PLAY.play();
 				
 				try {
 					update();
@@ -123,10 +125,10 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
 			running = true;
 			setUplevel();
 			gameover = false;
+			Sound.PLAY.play();
 			level = 1;
 			life = 3;
 			setFPS(level * 20);
-			difficult = new Difficult();
 			menu = new Menu();
 			
 			this.addMouseListener(new MouseInput());
@@ -149,6 +151,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
 			score = 0;
 			dx = dy = 0;
 			gameover = false;
+			Sound.PLAY.play();
 		}
 		
 		public void setApple() {
@@ -159,9 +162,10 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
 			apple.setPosition(x, y);
 		}
 		private void requestRender() {
-
+			
 			if(State == STATE.GAME) {
 			render(g2d);
+			
 			}else if(State == STATE.MENU) {
 				menu.render(g2d);
 				
@@ -174,9 +178,12 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
 		}
 		
 		private void update() throws InterruptedException {
+			
 			if(gameover) {
 				if(start) {
 					setUplevel();
+					Sound.PLAY.play();
+					
 				}
 				return;
 			}
@@ -218,6 +225,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
 					}
 					break;
 				}
+				
 			}
 			
 			if(apple.isCollsion(head)) {
@@ -227,6 +235,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
 				Entity e = new Entity(SIZE);
 				e.setPosition(-100,-100);
 				snake.add(e);
+				
 				if(score % 10 == 0) {
 					Sound.LEVELUP.play();
 					level++;
@@ -269,7 +278,8 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
 			if(dx == 0 && dy == 0) {
 				g2d.drawString("Ready!", 170, 200);
 				g2d.drawString("Press Up Arrow to Start", 150, 220);
-		}
+				Sound.PLAY.play();
+			}
 			
 }
 }
