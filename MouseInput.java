@@ -32,21 +32,29 @@ public class MouseInput implements MouseListener {
 		 * 120, 220, 100, 50);
 		 */
 
-		// Play Button
-		if (mx >= GamePanel.WIDTH / 11 + 120 && mx <= GamePanel.WIDTH / 11 + 220) {
-			if (my >= 120 && my <= 170) {
-				// Pressed Play Button
+		// Easy Button
+		if (mx >= GamePanel.WIDTH / 11 + 20 && mx <= GamePanel.WIDTH / 11 + 120) {
+			if (my >= 150 && my <= 180) {
+				// Pressed Easy Button
 				GamePanel.State = GamePanel.STATE.GAME;
 			}
 		}
 
-		// Difficult Button
-		if (mx >= GamePanel.WIDTH / 11 + 120 && mx <= GamePanel.WIDTH / 11 + 220) {
-			if (my >= 220 && my <= 270) {
-				// Pressed Difficult Button
-				GamePanel.State = GamePanel.STATE.DIFFICULT;
+		// Medium Button
+		if (mx >= GamePanel.WIDTH / 11 + 125 && mx <= GamePanel.WIDTH / 11 + 225) {
+			if (my >= 150 && my <= 180) {
+				// Pressed Medium Button
+				GamePanel.State = GamePanel.STATE.GAME;
 			}
 		}
+		
+		// Hard Button
+				if (mx >= GamePanel.WIDTH / 11 + 275 && mx <= GamePanel.WIDTH / 11 + 375) {
+					if (my >= 150 && my <= 180) {
+						// Pressed Hard Button
+						GamePanel.State = GamePanel.STATE.GAME;
+					}
+				}
 		
 		// Quit Button
 		if (mx >= GamePanel.WIDTH / 11 + 120 && mx <= GamePanel.WIDTH / 11 + 220) {
